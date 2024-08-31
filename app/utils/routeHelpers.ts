@@ -121,6 +121,12 @@ export function searchPath(
   return `${route}${search}`;
 }
 
+/* GPT IS HERE */
+export function gptPath(): string {
+  return "/gpt";
+}
+/* GPT IS HERE */
+
 export function sharedDocumentPath(shareId: string, docPath?: string) {
   if (shareId === env.ROOT_SHARE_ID) {
     return docPath ? docPath : "/";

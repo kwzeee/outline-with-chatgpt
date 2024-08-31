@@ -326,6 +326,7 @@
   "{{ count }} people invited to the document": "{{ count }} people invited to the document",
   "{{ count }} people invited to the document_plural": "{{ count }} people invited to the document",
   "Logo": "Logo",
+  "ChatGPT": "ChatGPT",
   "Move document": "Move document",
   "New doc": "New doc",
   "You can't reorder documents in an alphabetically sorted collection": "You can't reorder documents in an alphabetically sorted collection",

@@ -15,7 +15,12 @@ import usePolicy from "~/hooks/usePolicy";
 import useStores from "~/hooks/useStores";
 import OrganizationMenu from "~/menus/OrganizationMenu";
 import { metaDisplay } from "~/utils/keyboard";
-import { homePath, draftsPath, searchPath } from "~/utils/routeHelpers";
+import {
+  homePath,
+  draftsPath,
+  searchPath,
+  gptPath,
+} from "~/utils/routeHelpers";
 import TeamLogo from "../TeamLogo";
 import Tooltip from "../Tooltip";
 import Sidebar from "./Sidebar";
@@ -108,6 +113,16 @@ function AppSidebar() {
                 label={t("Search")}
                 exact={false}
               />
+
+              {/* GPT IS HERE */}
+              <SidebarLink
+                to={gptPath()}
+                icon={<SearchIcon />}
+                label={t("ChatGPT")}
+                exact={false}
+              />
+              {/* GPT IS HERE */}
+
               {can.createDocument && (
                 <SidebarLink
                   to={draftsPath()}

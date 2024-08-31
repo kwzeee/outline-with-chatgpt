@@ -15,6 +15,7 @@ import {
   archivePath,
   draftsPath,
   homePath,
+  gptPath,
   searchPath,
   settingsPath,
   matchDocumentSlug as slug,
@@ -24,6 +25,7 @@ import {
 const SettingsRoutes = lazy(() => import("./settings"));
 const Archive = lazy(() => import("~/scenes/Archive"));
 const Collection = lazy(() => import("~/scenes/Collection"));
+const ChatGPT = lazy(() => import("~/scenes/ChatGPT"));
 const Document = lazy(() => import("~/scenes/Document"));
 const Drafts = lazy(() => import("~/scenes/Drafts"));
 const Home = lazy(() => import("~/scenes/Home"));
@@ -85,6 +87,9 @@ function AuthenticatedRoutes() {
             <Route exact path={`/doc/${slug}/edit`} component={Document} />
             <Route path={`/doc/${slug}`} component={Document} />
             <Route exact path={`${searchPath()}/:term?`} component={Search} />
+            {/* GPT IS HERE*/}
+            <Route exact path={`${gptPath()}/`} component={ChatGPT} />
+            {/* GPT IS HERE*/}
             <Route path="/404" component={Error404} />
             <SettingsRoutes />
             <Route component={Error404} />
