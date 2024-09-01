@@ -18,19 +18,21 @@ export default function ChatGPT() {
   };
 
   const processPrompt = (pr: string) => {
-    addMessage(true, pr);
     fetch("http://localhost:5000/api/prompt", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(
         messages
-          ? messages
-              .map((item) => {
-                const roleString: string =
-                  item.isUser === true ? "user" : "assistant";
-                return { role: roleString, message: item.message };
-              })
-              .reverse()
+          ? [
+              ...messages
+                .map((item) => {
+                  const roleString: string =
+                    item.isUser === true ? "user" : "assistant";
+                  return { role: roleString, message: item.message };
+                })
+                .reverse(),
+              { role: "user", message: pr },
+            ]
           : [{ role: "user", message: pr }]
       ),
     })
@@ -53,6 +55,7 @@ export default function ChatGPT() {
 
   const handleKeyDown = (ev: React.KeyboardEvent<HTMLInputElement>) => {
     if (ev.key === "Enter") {
+      addMessage(true, prompt);
       processPrompt(prompt);
       setPrompt("");
       return;
@@ -63,11 +66,6 @@ export default function ChatGPT() {
     <Scene>
       <h1>ChatGPT</h1>
       <ResultsWrapper column auto>
-        <MessageInput
-          value={prompt}
-          onChange={handlePromptChange}
-          onKeyDown={handleKeyDown}
-        />
         <ResultList column>
           {messages !== null
             ? messages.map((elem) => (
@@ -76,6 +74,11 @@ export default function ChatGPT() {
               ))
             : null}
         </ResultList>
+        <MessageInput
+          value={prompt}
+          onChange={handlePromptChange}
+          onKeyDown={handleKeyDown}
+        />
       </ResultsWrapper>
     </Scene>
   );
@@ -92,7 +95,7 @@ const ResultsWrapper = styled(Flex)`
 const ResultList = styled(Flex)`
   margin-bottom: 20px;
   overflow: scroll;
-  height: 100%;
+  height: 60vh;
 `;
 
 // export default observer(ChatGPT);

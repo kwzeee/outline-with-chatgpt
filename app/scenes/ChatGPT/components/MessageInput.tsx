@@ -29,6 +29,7 @@ function MessageInput(
 const Wrapper = styled(Flex)`
   position: relative;
   margin-bottom: 8px;
+  bottom: 0;
 `;
 
 const StyledInput = styled.input`
