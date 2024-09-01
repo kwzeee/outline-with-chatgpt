@@ -1,5 +1,14 @@
 version: "3"
 services:
+  web:
+    build: ./gpt-server/
+    ports:
+      - "5000:5000"
+    develop:
+      watch:
+        - action: sync
+          path: ./gpt-server
+          target: .
   redis:
     image: redis
     ports:

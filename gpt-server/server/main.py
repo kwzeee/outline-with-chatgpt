@@ -37,4 +37,4 @@ if __name__ == '__main__':
         base_url="https://api.proxyapi.ru/openai/v1"
     )
 
-    app.run()
+    app.run(host='0.0.0.0')
