@@ -9,6 +9,7 @@ CORS(app)
 
 client = None
 MAX_TOKENS=10
+API_KEY = None
 
 
 
@@ -32,9 +33,10 @@ def send_prompt():
 
 
 if __name__ == '__main__':
-    client = OpenAI(
-        api_key="sk-FkiIDqOessbUWct0OEsjfVZp5R5gPTRT",
-        base_url="https://api.proxyapi.ru/openai/v1"
-    )
+    if API_KEY:
+        client = OpenAI(
+            api_key=API_KEY,
+            base_url="https://api.proxyapi.ru/openai/v1"
+        )
 
     app.run(host='0.0.0.0')
