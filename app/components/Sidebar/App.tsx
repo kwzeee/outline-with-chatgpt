@@ -113,16 +113,12 @@ function AppSidebar() {
                 label={t("Search")}
                 exact={false}
               />
-
-              {/* GPT IS HERE */}
               <SidebarLink
                 to={gptPath()}
                 icon={<SearchIcon />}
                 label={t("ChatGPT")}
                 exact={false}
               />
-              {/* GPT IS HERE */}
-
               {can.createDocument && (
                 <SidebarLink
                   to={draftsPath()}

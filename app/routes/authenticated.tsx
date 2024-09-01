@@ -87,9 +87,7 @@ function AuthenticatedRoutes() {
             <Route exact path={`/doc/${slug}/edit`} component={Document} />
             <Route path={`/doc/${slug}`} component={Document} />
             <Route exact path={`${searchPath()}/:term?`} component={Search} />
-            {/* GPT IS HERE*/}
             <Route exact path={`${gptPath()}/`} component={ChatGPT} />
-            {/* GPT IS HERE*/}
             <Route path="/404" component={Error404} />
             <SettingsRoutes />
             <Route component={Error404} />
